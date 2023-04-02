@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  user-select: none;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-container {
+  width: 65%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.quiz-container h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.answer-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.answer-container>button {
+  width: 25%;
+  border-radius: 7.25px;
+  font-size: 1.5rem;
+  color: #ddd;
+  border: 2.5px solid #666;
+  transition: all .2s ease-in-out;
+}
+
+.submit-button {
+  margin-top: 2rem;
+  width: 65%;
+  border-radius: 7.25px;
+  font-size: 1.5rem;
+  background-color: #ccc;
+  color: #333;
+  border: 2.5px solid #666;
+  transition: all .2s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.grey {
+  background-color: #333;
+}
+
+.green {
+  --background-color: green;
+  animation: change-background 0.2s ease-in forwards;
+}
+
+.red {
+  --background-color: red;
+  animation: change-background 0.2s ease-in forwards;
+}
+
+@keyframes change-background {
+  0% {
+    background-color: #333;
+    color: #ccc;
+  }
+
+  100% {
+    background-color: var(--background-color);
+    color: #fff;
+  }
+}
