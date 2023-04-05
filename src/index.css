@@ -6,6 +6,12 @@
   user-select: none;
 }
 
+body {
+  background-image: url("hatter.jpg");
+  background-size: cover;
+  background-position: -25%;
+}
+
 .App {
   width: 100vw;
   height: 100vh;
@@ -16,17 +22,21 @@
 
 .quiz-container {
   width: 65%;
-  height: 50%;
+  padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+  background-color: rgba(51, 51, 51, 0.6);
+  border: 1rem solid #ccc;
+  border-radius: 40px;
 }
 
 .quiz-container h1 {
   font-size: 3rem;
   font-weight: bolder;
   text-align: center;
+  color: #aeadad;
 }
 
 .answer-container {
@@ -49,7 +59,7 @@
   width: 65%;
   border-radius: 7.25px;
   font-size: 1.5rem;
-  background-color: #ccc;
+  background-color: #aaaaaa;
   color: #333;
   border: 2.5px solid #666;
   transition: all .2s ease-in-out;
@@ -61,27 +71,155 @@ button:hover {
 }
 
 .grey {
-  background-color: #333;
+  background-color: rgb(78, 78, 78, 0.8);
 }
 
 .green {
-  --background-color: green;
+  --background-color: rgb(0, 128, 0, 0.7);
   animation: change-background 0.2s ease-in forwards;
 }
 
 .red {
-  --background-color: red;
+  --background-color: rgb(128, 0, 0, 0.7);
   animation: change-background 0.2s ease-in forwards;
+}
+
+.selected {
+  background-color: rgb(102, 102, 102, 0.7);
+}
+
+.modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(227, 227, 227, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  height: 60%;
+  width: 30%;
+  background-color: rgb(102, 102, 102, 0.85);
+  text-align: center;
+  padding: 20px;
+  border: 15px solid #333;
+  border-radius: 7.5%;
+}
+
+.modal-container h1 {
+  font-size: 3rem;
+}
+
+.modal-container p {
+  font-size: 1.25rem;
+}
+
+.false,
+.correct {
+  margin: 7.5px 0;
+  font-size: 1.5rem;
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  transform: scale(3);
+}
+
+.correct::before {
+  color: green;
+}
+
+.false::before {
+  color: red;
+}
+
+.restart-btn {
+  width: 50%;
+  border-radius: 7.25px;
+  font-size: 1.5rem;
+  color: #ddd;
+  border: 2.5px solid #fff;
+  background: #333;
+  transition: all .2s ease-in-out;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: green;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #444;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #333;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 @keyframes change-background {
   0% {
-    background-color: #333;
-    color: #ccc;
+    background-color: #717171;
+    border-color: #666;
   }
 
   100% {
     background-color: var(--background-color);
-    color: #fff;
+    border-color: var(--background-color);
   }
 }
