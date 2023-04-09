@@ -22,7 +22,7 @@ body {
 
 .quiz-container {
   width: 65%;
-  padding: 2rem;
+  padding: 1.5em;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -125,7 +125,17 @@ button:hover {
   list-style: none;
 }
 
-ul li::before {
+.list-container {
+  height: 60%;
+  overflow-y: scroll;
+  border: 2px solid #222;
+  border-radius: 12.5px;
+  margin-bottom: 2.5%;
+  padding: 15px;
+}
+
+
+.list-container li::before {
   content: "\2022";
   font-weight: bold;
   display: inline-block;
@@ -147,9 +157,20 @@ ul li::before {
   border-radius: 7.25px;
   font-size: 1.5rem;
   color: #ddd;
-  border: 2.5px solid #fff;
+  border: 2.5px solid #ccc;
   background: #333;
   transition: all .2s ease-in-out;
+}
+
+.switch-container {
+  margin-top: 2.5%;
+  display: flex;
+  justify-content: center;
+}
+
+.switch-container h2 {
+  margin-left: 20px;
+  color: #ccc;
 }
 
 .switch {
@@ -172,7 +193,7 @@ ul li::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: red;
+  background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -184,17 +205,17 @@ ul li::before {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: green;
+  background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked+.slider {
-  background-color: #444;
+  background-color: #333;
 }
 
 input:focus+.slider {
-  box-shadow: 0 0 1px #333;
+  box-shadow: 0 0 1px #2196F3;
 }
 
 input:checked+.slider:before {

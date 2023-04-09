@@ -1,4 +1,5 @@
 import { useState } from "react"
+import SetMode from "./SetMode"
 
 const Quiz = ({ data, id, updateId, updatePoints }) => {
 
@@ -7,6 +8,7 @@ const Quiz = ({ data, id, updateId, updatePoints }) => {
     const correctAnswer = data[id][4]
     const [selectedAnswer, setSelectedAnswer] = useState("")
     const [colors, setColors] = useState(["grey", "grey", "grey"])
+    const [showAnswer, setShowAnswer] = useState(false)
 
     const handleSelect = (answer) => {
         return () => {
@@ -26,17 +28,24 @@ const Quiz = ({ data, id, updateId, updatePoints }) => {
                 setColors(colors.map((c, i) => {
                     if (i === answers.indexOf(selectedAnswer)) {
                         isCorrect = true
-                        return "green"
+                        if (showAnswer) {
+                            return "green"
+                        }
+
                     }
                     return "grey"
                 }))
             } else {
                 setColors(colors.map((c, i) => {
                     if (i === answers.indexOf(selectedAnswer)) {
-                        return "red"
+                        if (showAnswer) {
+                            return "red"
+                        }
                     }
                     if (i === answers.indexOf(correctAnswer)) {
-                        return "green"
+                        if (showAnswer) {
+                            return "green"
+                        }
                     }
                     return "grey"
                 }))
@@ -49,6 +58,10 @@ const Quiz = ({ data, id, updateId, updatePoints }) => {
         }
     }
 
+    const changeAnswerState = (isChecked) => {
+        setShowAnswer(isChecked)
+    }
+
     return (
         <div className="quiz-container">
             <h1>{question}</h1>
@@ -58,6 +71,7 @@ const Quiz = ({ data, id, updateId, updatePoints }) => {
                 ))}
             </div>
             <button className="submit-button" onClick={checkAnswer}>Válasz ellenőrzése</button>
+            <SetMode changeAnswerState={changeAnswerState}></SetMode>
         </div>
     );
 }

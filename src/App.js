@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import Data from "./data/data.csv"
 import EndModal from "./EndModal";
-import SetMode from "./SetMode";
 
 function App() {
   const [data, setData] = useState()
@@ -25,7 +24,7 @@ function App() {
   }, [])
 
   const updateId = () => {
-    if (id < 4) {
+    if (id < data.length - 1) {
       setId(id + 1)
     }
     else {
@@ -50,11 +49,12 @@ function App() {
     setHasEnded(false)
   }
 
+
+
   return (
     <div className="App">
-      <SetMode></SetMode>
       {data && <Quiz data={data} id={id} updateId={updateId} updatePoints={updatePoints} />}
-      {hasEnded && <EndModal points={points} resetPage={resetPage} />}
+      {hasEnded && <EndModal points={points} resetPage={resetPage} data={data} />}
     </div>
   );
 }

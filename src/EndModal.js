@@ -1,4 +1,4 @@
-const EndModal = ({ points, resetPage }) => {
+const EndModal = ({ points, resetPage, data }) => {
     const pointSumFunc = () => {
         let pointSum = 0
         points.forEach(point => {
@@ -12,10 +12,10 @@ const EndModal = ({ points, resetPage }) => {
             <div className="modal-container">
                 <h1>Vége</h1>
                 <p>Elért pontszám:{pointSumFunc()}</p>
-                <ul>
+                <ul className="list-container">
                     {points.map((point, i) => {
                         let pointClass = point === 1 ? "correct" : "false"
-                        let pointText = point === 1 ? "Jó" : "Hibás"
+                        let pointText = data[i][0]
 
                         return (
                             <li key={i} className={pointClass}>{pointText}</li>
